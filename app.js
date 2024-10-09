@@ -6,6 +6,7 @@ const helmet = require('helmet');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
+const compression = require('compression');
 
 const tourRouter = require('./routes/tourRouter');
 const userRouter = require('./routes/userRouter');
@@ -47,6 +48,8 @@ app.use(cookieParser());
 app.use(xss());
 
 app.use(hpp({ whitelist: ['duration'] }));
+
+app.use(compression());
 
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);

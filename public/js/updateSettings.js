@@ -5,7 +5,7 @@ export const updateData = async (data) => {
   try {
     const res = await axios({
       method: 'PATCH',
-      url: 'http://127.0.0.1:3000/api/v1/users/updateMe',
+      url: '/api/v1/users/updateMe',
       data: data,
     });
 
@@ -24,7 +24,7 @@ export const updatePassword = async (oldPassword, newPassword, newPasswordConfir
   try {
     const res = await axios({
       method: 'PATCH',
-      url: 'http://127.0.0.1:3000/api/v1/users/updatePassword',
+      url: '/api/v1/users/updatePassword',
       data: {
         oldPassword: oldPassword,
         newPassword: newPassword,
