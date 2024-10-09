@@ -7,6 +7,7 @@ const xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
+const cors = require('cors');
 
 const tourRouter = require('./routes/tourRouter');
 const userRouter = require('./routes/userRouter');
@@ -18,8 +19,18 @@ const AppError = require('./utils/appError');
 const app = express();
 
 app.set('view engine', 'pug');
-
 app.set('views', path.join(__dirname, 'views'));
+
+app.use(cors());
+
+// app.use(
+//   cors({
+//     origin: 'https://natours.com',
+//   })
+// );
+
+app.options('*', cors());
+// app.options('/api/v1/tours/:id', cors());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
